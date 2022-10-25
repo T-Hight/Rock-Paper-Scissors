@@ -1,1 +1,2 @@
 # Rock-Paper-Scissors
+This program is designed to help me learn and practice creating functions. It will play 5 rounds of Rock-Paper-Scissors between the user and the computer. After the 5 rounds are played, the computer will declare a winner. 
