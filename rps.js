@@ -57,6 +57,12 @@ function game() {
   console.log("Your score = " + userScore);
   console.log("Computer's score = " + computerScore);
   }
+  
+  if (userScore > computerScore) {
+    console.log("You are the winner!");
+  } else {
+    console.log("The Computer is the winner!");
+  }
 }
 
 game();
