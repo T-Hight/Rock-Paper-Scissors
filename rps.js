@@ -84,23 +84,27 @@ container.appendChild(resultsDiv);
 //Create DOM for playerWinText
 const playerWinText = document.createElement('p');
 playerWinText.style.color = 'blue';
+playerWinText.style.fontSize = '20px';
 playerWinText.textContent = ("Your score = " + userScore);
 resultsDiv.appendChild(playerWinText);
 
 //Create DOM for computerWinText
 const computerWinText = document.createElement('p');
 computerWinText.style.color = 'red';
+computerWinText.style.fontSize = '20px';
 computerWinText.textContent = ("Computer's score = " + computerScore);
 resultsDiv.appendChild(computerWinText);
 
 //Create DOM for roundWinText
 const roundWinText = document.createElement('p');
 roundWinText.style.color = 'green';
+roundWinText.style.fontSize = '20px';
 resultsDiv.appendChild(roundWinText);
 
 //Create DOM for matchWinText
 const matchWinText = document.createElement('p')
 matchWinText.style.color = 'purple';
+matchWinText.style.fontSize = '30px';
 resultsDiv.appendChild(matchWinText);
 
 //Create function to determine who won the game
