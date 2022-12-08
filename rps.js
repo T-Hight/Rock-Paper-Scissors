@@ -1,9 +1,11 @@
+//Create function for random computer choice
 function getComputerChoice() {
   let rps = ["rock", "paper", "scissors"];
   let random = rps[Math.floor(Math.random() * rps.length)];
   return random;
 }
 
+//Create function for a round of RPS between user and computer
 function playRound(playerSelection, computerSelection) {
 
   if (playerSelection === 'rock') {
@@ -43,47 +45,103 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 
-let userScore = parseInt(0);
-let computerScore = parseInt(0);
-let win = "You win!";
-let lose = "You lose!";
-let tie = "It's a tie!";
+//Create necessary variables
+let userScore = 0;
+let computerScore = 0;
+let win = "You win this round!";
+let lose = "You lose this round!";
+let tie = "This round is a tie!";
 
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 
-
+//Create function to play the game
 function game() {
 
   const buttons = document.querySelectorAll('button');
 
   buttons.forEach((button) => {
 
-    button.addEventListener('click', (e) => {
-      console.log(e.target);
+    button.addEventListener('click', () => {
       let playerSelection = button.className;
-      console.log(playerSelection);
       let computerSelection = getComputerChoice();
-      console.log(computerSelection);
-      console.log(playRound(playerSelection, computerSelection));
-      console.log("Your score = " + userScore);
-      console.log("Computer's score = " + computerScore);
-  
-  
-      if (userScore > computerScore) {
-      console.log("You are the winner!");
-      } 
-      else if (userScore < computerScore) {
-      console.log("The Computer is the winner!");
-      }
-      else {
-        console.log("It's a Tie!")
-      }
+      roundWinText.textContent = (playRound(playerSelection, computerSelection));
+      playerWinText.textContent = ("Your score = " + userScore);
+      computerWinText.textContent = ("Computer's score = " + computerScore);
+
+      endGame();
     });
   });
 }
 
+//Create DOM method for container div
+const container = document.querySelector('#container');
+const resultsDiv = document.createElement('div')
+resultsDiv.style.marginTop = '20px';
+container.appendChild(resultsDiv);
 
+//Create DOM for playerWinText
+const playerWinText = document.createElement('p');
+playerWinText.style.color = 'blue';
+playerWinText.textContent = ("Your score = " + userScore);
+resultsDiv.appendChild(playerWinText);
+
+//Create DOM for computerWinText
+const computerWinText = document.createElement('p');
+computerWinText.style.color = 'red';
+computerWinText.textContent = ("Computer's score = " + computerScore);
+resultsDiv.appendChild(computerWinText);
+
+//Create DOM for roundWinText
+const roundWinText = document.createElement('p');
+roundWinText.style.color = 'green';
+resultsDiv.appendChild(roundWinText);
+
+//Create DOM for matchWinText
+const matchWinText = document.createElement('p')
+matchWinText.style.color = 'purple';
+resultsDiv.appendChild(matchWinText);
+
+//Create function to determine who won the game
+function endGame() {
+  if(userScore == 5) {
+    matchWinText.textContent = `You're the winner!!!!`;
+    
+    //Disable buttons
+    document.getElementById('1').disabled = true;
+    document.getElementById('2').disabled = true;
+    document.getElementById('3').disabled = true;
+    
+    //Create new DOM button to replay
+    const replay = document.createElement('button');
+    replay.textContent = 'Play Again?';
+    resultsDiv.appendChild(replay);
+
+    //If clicked, reload page
+    replay.addEventListener('click', () => {
+      location.reload();
+    });
+
+  }
+  else if(computerScore === 5) {
+    matchWinText.textContent = 'The computer is the winner!!!!';
+    
+    //Disable buttons
+    document.getElementById('1').disabled = true;
+    document.getElementById('2').disabled = true;
+    document.getElementById('3').disabled = true;
+    
+    //Create new DOM button to replay
+    const replay = document.createElement('button');
+    replay.textContent = 'Play Again?';
+    resultsDiv.appendChild(replay);
+
+    //If clicked, reload page
+    replay.addEventListener('click', () => {
+      location.reload();
+    });
+  }
+}
 
 game();
