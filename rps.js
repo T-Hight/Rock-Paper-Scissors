@@ -105,7 +105,7 @@ resultsDiv.appendChild(matchWinText);
 
 //Create function to determine who won the game
 function endGame() {
-  if(userScore == 5) {
+  if(userScore === 5) {
     matchWinText.textContent = `You're the winner!!!!`;
     
     //Disable buttons
